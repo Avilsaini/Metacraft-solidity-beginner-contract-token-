@@ -47,40 +47,43 @@ contract MyToken {
 }
 
 ```
-1. **Compile the contract:**
-   \`\`\`bash
-   truffle compile
+### Steps to Implement the Contract
+
+1. **Define Public Variables**:
+   - The contract already defines public variables `name`, `nickname`, and `supply` to store details about the token.
+
+2. **Define Mapping**:
+   - The contract includes a mapping named `userBalances` to map addresses to their token balances.
+
+3. **Implement Mint Function**:
+   - The `mint` function increases the `supply` and updates the balance of the specified address (`_address`).
+
+4. **Implement Burn Function**:
+   - The `burn` function decreases the `supply` and the balance of the specified address (`_address`).
+   - It ensures that the balance is sufficient before burning tokens using a `require` statement.;
    \`\`\`
 
-2. **Deploy the contract:**
-   \`\`\`bash
-   truffle migrate
-   \`\`\`
 
-3. **Mint tokens:**
-   \`\`\`javascript
-   const MyToken = artifacts.require("MyToken");
+### Contract Requirements
 
-   module.exports = async function (callback) {
-     let instance = await MyToken.deployed();
-     
-     
-     callback();
-   };
-   \`\`\`
 
-4. **Burn tokens:**
-   \`\`\`javascript
-   const MyToken = artifacts.require("MyToken");
+1. ****Public Variables****: The contract will have public variables to store the details about the token, including:
+   - Token Name
+   - Token symbol (Abbrv.)
+   - Total Supply
 
-   module.exports = async function (callback) {
-     let instance = await MyToken.deployed();
-     
-     
-     callback();
-   };
-   \`\`\`
+2. ****Mapping of Addresses to Balances****: A mapping will be used to keep track of the balances of different addresses.
 
+3. ****Mint Function****: A function to mint new tokens. This function will:
+   - Take an address and a value as parameters.
+   - Increase the total supply by the specified value.
+   - Increase the balance of the specified address by the same amount.
+
+4. ****Burn Function****: A function to burn tokens. This function will:
+   - Take an address and a value as parameters.
+   - Decrease the total supply by the specified value.
+   - Decrease the balance of the specified address by the same amount.
+   - Ensure that the balance of the address is greater than or equal to the amount to be burned before proceeding.
  
 ## Authors
 
